@@ -1,19 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
+  const { store, actions } = useContext(Context);
+
+  return (
+    <nav className="navbar navbar-light bg-light">
+      <div className="container">
+        <Link to="/">
+          <img
+            src="https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
+            style={{ width: "8rem" }}
+          />
+        </Link>
+        <div className="ml-auto">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Favorites {store.favorites.length}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="#">
+                Action
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Another action
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                Something else here
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 };

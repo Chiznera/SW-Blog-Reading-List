@@ -35,6 +35,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           .catch((error) => console.log("error", error));
       },
 
+      getPeople: () => {
+        fetch("https://swapi.dev/api/people")
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ people: result.results });
+            console.log("result");
+          })
+          .catch((error) => console.log("error", error));
+      },
+
+      getVehicles: () => {
+        fetch("https://swapi.dev/api/vehicles")
+          .then((response) => response.json())
+          .then((result) => {
+            setStore({ vehicles: result.results });
+            console.log("result");
+          })
+          .catch((error) => console.log("error", error));
+      },
+
       getMessage: async () => {
         try {
           // fetching data from the backend

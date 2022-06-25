@@ -2,33 +2,31 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card.js";
 
-const Planets = () => {
+const Vehicles = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getPlanets();
+    actions.getVehicles();
   }, []);
 
   return (
     <div className="container text-light bg-dark">
       <div className="row">
         <div className="hiddenScroll d-flex flex-row">
-          {store.planets.map((planet, index) => (
+          {store.vehicles.map((vehicle, index) => (
             <div>
               <Card
-                title={planet.name}
-                link={planet.url}
+                title={vehicle.name}
+                link={vehicle.url}
                 key={index}
                 text={
                   <>
-                    Climate:{" "}
-                    {planet.climate ? planet.climate : "Placeholder Text"}
+                    Manufacturer:{" "}
+                    {vehicle.manufacturer
+                      ? vehicle.manufacturer
+                      : "Placeholder Text"}
                     <br />
-                    Terrain:{" "}
-                    {planet.terrain ? planet.terrain : "Placeholder Text"}
-                    <br />
-                    Population:{" "}
-                    {planet.population ? planet.population : "Placeholder Text"}
+                    Cost: {vehicle.cost ? vehicle.cost : "Placeholder Text"}
                   </>
                 }
               />
@@ -41,4 +39,4 @@ const Planets = () => {
   );
 };
 
-export { Planets };
+export { Vehicles };

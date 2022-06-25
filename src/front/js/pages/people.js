@@ -2,33 +2,35 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card.js";
 
-const Planets = () => {
+const People = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getPlanets();
+    actions.getPeople();
   }, []);
 
   return (
     <div className="container text-light bg-dark">
       <div className="row">
         <div className="hiddenScroll d-flex flex-row">
-          {store.planets.map((planet, index) => (
+          {store.people.map((people, index) => (
             <div>
               <Card
-                title={planet.name}
-                link={planet.url}
+                title={people.name}
+                link={people.url}
                 key={index}
                 text={
                   <>
-                    Climate:{" "}
-                    {planet.climate ? planet.climate : "Placeholder Text"}
+                    Gender: {people.gender ? people.gender : "Placeholder Text"}
                     <br />
-                    Terrain:{" "}
-                    {planet.terrain ? planet.terrain : "Placeholder Text"}
+                    Hair Color:{" "}
+                    {people.hair_color ? people.hair_color : "Placeholder Text"}
                     <br />
-                    Population:{" "}
-                    {planet.population ? planet.population : "Placeholder Text"}
+                    Eye Color:{" "}
+                    {people.eye_color ? people.eye_color : "Placeholder Text"}
+                    <br />
+                    Birth Year:{" "}
+                    {people.birth_year ? people.birth_year : "Placeholder Text"}
                   </>
                 }
               />
@@ -41,4 +43,4 @@ const Planets = () => {
   );
 };
 
-export { Planets };
+export { People };
