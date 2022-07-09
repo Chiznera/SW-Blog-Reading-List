@@ -18,15 +18,15 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
-class Person(db.Model):
+class People(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
-    name = db.Column(db.Integer, unique=True, primary_key=True)
-    birth_year = db.Column(db.Integer(256))
+    name = db.Column(db.String(256))
+    birth_year = db.Column(db.Integer)
     eye_color = db.Column(db.String(256))
     gender = db.Column(db.String(256))
     hair_color = db.Column(db.String(256))
-    height = db.Column(db.Integer(256))
-    mass = db.Column(db.Integer(256))
+    height = db.Column(db.Integer)
+    mass = db.Column(db.Integer)
     skin_color = db.Column(db.String(256))
     homeworld = db.Column(db.String(256))
     

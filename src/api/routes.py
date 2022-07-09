@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, People, User
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -21,15 +21,15 @@ def handle_hello():
 
 @api.route('/people', methods=['GET'])
 def get_people():
-    person = People.query.all().one_or_none()
-    if person is None:
+    people = People.query.all()
+    if people is None:
         return jsonify(msg="This page does not exist."), 400
     else:
         return jsonify(
         data=[person.serialize() for person in people]), 200
 
 @api.route('/people/<int:id>', methods=['GET'])
-def get_people(id):
+def get_person(id):
     person = People.query.filter(
         People.id == id
     ).one_or_none()
@@ -42,46 +42,46 @@ def get_people(id):
 
 
 
-@api.route('/planets', methods=['GET'])
-def get_planets():
-    planet = Planets.query.all().one_or_none()
-    if planet is None:
-        return jsonify(msg="This page does not exist."), 400
-    else:
-        return jsonify(
-        data=[planet.serialize() for planet in planets]), 200
+# @api.route('/planets', methods=['GET'])
+# def get_planets():
+#     planets = Planets.query.all()
+#     if planets is None:
+#         return jsonify(msg="This page does not exist."), 400
+#     else:
+#         return jsonify(
+#         data=[planet.serialize() for planet in planets]), 200
 
-@api.route('/planets/<int:id>', methods=['GET'])
-def get_planets(id):
-    planet = Planets.query.filter(
-        Planets.id == id
-    ).one_or_none()
-    if planet is None:
-        return jsonify(msg="This planet does not exist."), 400
-    else:
-        return jsonify(
-        data=person.serialize()
-        ), 200
+# @api.route('/planets/<int:id>', methods=['GET'])
+# def get_planet(id):
+#     planet = Planets.query.filter(
+#         Planets.id == id
+#     ).one_or_none()
+#     if planet is None:
+#         return jsonify(msg="This planet does not exist."), 400
+#     else:
+#         return jsonify(
+#         data=person.serialize()
+#         ), 200
 
 
 
-@api.route('/vehicles', methods=['GET'])
-def get_vehicles():
-    vehicle = Vehicles.query.all().one_or_none()
-    if vehicle is None:
-        return jsonify(msg="This page does not exist."), 400
-    else:
-        return jsonify(
-        data=[person.serialize() for person in people]), 200
+# @api.route('/vehicles', methods=['GET'])
+# def get_vehicles():
+#     vehicles = Vehicles.query.all()
+#     if vehicles is None:
+#         return jsonify(msg="This page does not exist."), 400
+#     else:
+#         return jsonify(
+#         data=[vehicle.serialize() for vehicle in Vehicles]), 200
 
-@api.route('/people/<int:id>', methods=['GET'])
-def get_people(id):
-    person = People.query.filter(
-        People.id == id
-    ).one_or_none()
-    if person is None:
-        return jsonify(msg="This person does not exist."), 400
-    else:
-        return jsonify(
-        data=person.serialize()
-        ), 200
+# @api.route('/vehicles/<int:id>', methods=['GET'])
+# def get_vehicle(id):
+#     vehicle = Vehicles.query.filter(
+#         Vehicles.id == id
+#     ).one_or_none()
+#     if vehicle is None:
+#         return jsonify(msg="This vehicle does not exist."), 400
+#     else:
+#         return jsonify(
+#         data=vehicle.serialize()
+#         ), 200
