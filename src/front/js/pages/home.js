@@ -12,7 +12,7 @@ export const Home = () => {
   return (
     <>
       <div className="my-5">
-        <h1 className="offset-2">Characters</h1>
+        <h1 className="offset-2">People</h1>
         <People />
       </div>
       <div className="my-5">

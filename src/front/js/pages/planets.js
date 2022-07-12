@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Card } from "../component/card.js";
+import { useParams } from "react-router-dom";
 
 const Planets = () => {
   const { store, actions } = useContext(Context);
@@ -8,6 +9,8 @@ const Planets = () => {
   useEffect(() => {
     actions.getPlanets();
   }, []);
+
+  const { id } = useParams();
 
   return (
     <div className="container text-light bg-dark">
@@ -17,7 +20,7 @@ const Planets = () => {
             <div>
               <Card
                 title={planet.name}
-                link={planet.url}
+                link={"/planets/" + index}
                 key={index}
                 text={
                   <>

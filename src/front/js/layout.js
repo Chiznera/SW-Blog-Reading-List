@@ -12,7 +12,9 @@ import { Footer } from "./component/footer";
 import { Planets } from "./pages/planets.js";
 import { People } from "./pages/people.js";
 import { Vehicles } from "./pages/vehicles.js";
-import { Details } from "./pages/details.js"
+import { PlanetDetails } from "./pages/planetdetails.js";
+import { PersonDetails } from "./pages/persondetails.js";
+import { VehicleDetails } from "./pages/vehicledetails.js";
 
 //create your first component
 const Layout = () => {
@@ -32,7 +34,9 @@ const Layout = () => {
             <Route element={<Planets />} path="/planets" />
             <Route element={<People />} path="/people" />
             <Route element={<Vehicles />} path="/vehicles" />
-            <Route element={<Details />} path="/details" />
+            <Route element={<PlanetDetails />} path="/planets/:id" />
+            <Route element={<PersonDetails />} path="/people/:id" />
+            <Route element={<VehicleDetails />} path="/vehicles/:id" />
 
             <Route element={<h1>Not found!</h1>} />
           </Routes>
