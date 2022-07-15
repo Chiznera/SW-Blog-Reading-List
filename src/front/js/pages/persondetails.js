@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { DetailComponent } from "../component/detailcomponent";
 
-const PlanetDetails = () => {
+const PersonDetails = () => {
   const { store, actions } = useContext(Context);
   const { catagory, id } = useParams();
 
   useEffect(() => {
-    actions.getPlanets();
+    actions.getPeople();
   }, []);
 
   return (
@@ -20,7 +20,7 @@ const PlanetDetails = () => {
           alt="..."
         />
         <div className="card-header">
-          <div className="card-title">{store.planets[id]?.name.toString()}</div>
+          <div className="card-title">{store.people[id]?.name.toString()}</div>
           <div className="card-body">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
             sagittis leo, nec rhoncus nulla. Etiam quis ligula sit amet libero
@@ -37,40 +37,29 @@ const PlanetDetails = () => {
       </div>
       <div className="d-flex">
         <DetailComponent
-          title="Diameter"
-          text={`${store.planets[id]?.diameter} km`}
+          title="Birth Year"
+          text={`${store.people[id]?.birth_year}`}
         />
         <DetailComponent
-          title="Rotation Period"
-          text={`${store.planets[id]?.rotation_period} hours`}
+          title="Eye Color"
+          text={`${store.people[id]?.eye_color}`}
         />
         <DetailComponent
-          title="Orbital Period"
-          text={`${store.planets[id]?.orbital_period} days`}
+          title="Hair Color"
+          text={`${store.people[id]?.hair_color}`}
         />
         <DetailComponent
-          title="Gravity"
-          text={`${store.planets[id]?.gravity} G`}
+          title="Height"
+          text={`${store.people[id]?.height} cm`}
         />
+        <DetailComponent title="Mass" text={`${store.people[id]?.mass} kg`} />
         <DetailComponent
-          title="Population"
-          text={`${store.planets[id]?.population}`}
-        />
-        <DetailComponent
-          title="Climate"
-          text={`${store.planets[id]?.climate}`}
-        />
-        <DetailComponent
-          title="Terrain"
-          text={`${store.planets[id]?.terrain}`}
-        />
-        <DetailComponent
-          title="Surface Water"
-          text={`${store.planets[id]?.surface_water}%`}
+          title="Skin Color"
+          text={`${store.people[id]?.skin_color}`}
         />
       </div>
     </div>
   );
 };
 
-export { PlanetDetails };
+export { PersonDetails };

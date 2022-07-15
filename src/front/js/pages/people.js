@@ -17,7 +17,7 @@ const People = () => {
             <div>
               <Card
                 title={people.name}
-                link={people.url}
+                link={"/people/" + index}
                 key={index}
                 text={
                   <>

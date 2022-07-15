@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { DetailComponent } from "../component/detailcomponent";
 
-const PlanetDetails = () => {
+const VehicleDetails = () => {
   const { store, actions } = useContext(Context);
   const { catagory, id } = useParams();
 
   useEffect(() => {
-    actions.getPlanets();
+    actions.getVehicles();
   }, []);
 
   return (
@@ -20,7 +20,9 @@ const PlanetDetails = () => {
           alt="..."
         />
         <div className="card-header">
-          <div className="card-title">{store.planets[id]?.name.toString()}</div>
+          <div className="card-title">
+            {store.vehicles[id]?.name.toString()}
+          </div>
           <div className="card-body">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ut
             sagittis leo, nec rhoncus nulla. Etiam quis ligula sit amet libero
@@ -36,41 +38,43 @@ const PlanetDetails = () => {
         </div>
       </div>
       <div className="d-flex">
+        <DetailComponent title="model" text={`${store.vehicles[id]?.model}`} />
         <DetailComponent
-          title="Diameter"
-          text={`${store.planets[id]?.diameter} km`}
+          title="Vehicle Class"
+          text={`${store.vehicles[id]?.vehicle_class}`}
         />
         <DetailComponent
-          title="Rotation Period"
-          text={`${store.planets[id]?.rotation_period} hours`}
+          title="Manufacturer"
+          text={`${store.vehicles[id]?.manufacturer}`}
         />
         <DetailComponent
-          title="Orbital Period"
-          text={`${store.planets[id]?.orbital_period} days`}
+          title="Length"
+          text={`${store.vehicles[id]?.length} meters`}
         />
         <DetailComponent
-          title="Gravity"
-          text={`${store.planets[id]?.gravity} G`}
+          title="Cost in Credits"
+          text={`${store.vehicles[id]?.cost_in_credits} Galactic Credits`}
+        />
+        <DetailComponent title="Crew" text={`${store.vehicles[id]?.crew}`} />
+        <DetailComponent
+          title="Passengers"
+          text={`${store.vehicles[id]?.passengers}`}
         />
         <DetailComponent
-          title="Population"
-          text={`${store.planets[id]?.population}`}
+          title="Max Atmosphering Speed"
+          text={`${store.vehicles[id]?.max_atmosphering_speed}`}
         />
         <DetailComponent
-          title="Climate"
-          text={`${store.planets[id]?.climate}`}
+          title="Cargo Capacity"
+          text={`${store.vehicles[id]?.cargo_capacity}`}
         />
         <DetailComponent
-          title="Terrain"
-          text={`${store.planets[id]?.terrain}`}
-        />
-        <DetailComponent
-          title="Surface Water"
-          text={`${store.planets[id]?.surface_water}%`}
+          title="Consumables"
+          text={`${store.vehicles[id]?.consumables}`}
         />
       </div>
     </div>
   );
 };
 
-export { PlanetDetails };
+export { VehicleDetails };

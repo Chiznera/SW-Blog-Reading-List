@@ -17,7 +17,7 @@ const Vehicles = () => {
             <div>
               <Card
                 title={vehicle.name}
-                link={vehicle.url}
+                link={"/vehicles/" + index}
                 key={index}
                 text={
                   <>
