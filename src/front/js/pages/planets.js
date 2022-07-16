@@ -31,6 +31,8 @@ const Planets = () => {
                     {planet.population ? planet.population : "Placeholder Text"}
                   </>
                 }
+                func={actions.addFavorite}
+                item={planet}
               />
             </div>
           ))}

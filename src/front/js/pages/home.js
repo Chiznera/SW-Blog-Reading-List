@@ -7,8 +7,6 @@ import { Vehicles } from "./vehicles";
 import { People } from "./people";
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
-
   return (
     <>
       <div className="my-5">

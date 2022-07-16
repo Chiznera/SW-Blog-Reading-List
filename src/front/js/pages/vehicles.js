@@ -29,6 +29,8 @@ const Vehicles = () => {
                     Cost: {vehicle.cost ? vehicle.cost : "Placeholder Text"}
                   </>
                 }
+                func={actions.addFavorite}
+                item={vehicle}
               />
             </div>
           ))}

@@ -33,6 +33,8 @@ const People = () => {
                     {people.birth_year ? people.birth_year : "Placeholder Text"}
                   </>
                 }
+                func={actions.addFavorite}
+                item={people}
               />
             </div>
           ))}

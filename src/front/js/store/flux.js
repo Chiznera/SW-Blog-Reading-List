@@ -25,6 +25,13 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
+      addFavorite: (item, link) => {
+        const store = getStore();
+        item["link"]=link
+        store.favorites.push(item);
+        setStore(store);
+      },
+
       getPlanets: () => {
         fetch("https://swapi.dev/api/planets")
           .then((response) => response.json())
